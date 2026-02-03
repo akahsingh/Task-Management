@@ -91,4 +91,18 @@ router.get('/me', authenticateToken, (req, res) => {
   res.json({ user });
 });
 
+// Get all users (Admin endpoint)
+router.get('/users', (req, res) => {
+  try {
+    const users = db.prepare('SELECT id, username, email, created_at FROM users ORDER BY created_at DESC').all();
+    res.json({
+      total: users.length,
+      users
+    });
+  } catch (err) {
+    console.error('Get users error:', err);
+    res.status(500).json({ error: 'Server error fetching users' });
+  }
+});
+
 module.exports = router;
