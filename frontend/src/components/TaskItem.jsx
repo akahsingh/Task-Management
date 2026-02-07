@@ -63,14 +63,14 @@ const TaskItem = ({ task, onToggleStatus, onEdit, onDelete }) => {
           className="btn-icon"
           title="Edit task"
         >
-          Edit
+          {'\u270F'}
         </button>
         <button
           onClick={() => onDelete(task.id)}
           className="btn-icon btn-danger"
           title="Delete task"
         >
-          Delete
+          {'\uD83D\uDDD1'}
         </button>
       </div>
     </div>

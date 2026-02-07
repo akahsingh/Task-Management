@@ -39,8 +39,14 @@ const TaskForm = ({ task, onSubmit, onCancel }) => {
     }
   };
 
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onCancel();
+    }
+  };
+
   return (
-    <div className="task-form-overlay">
+    <div className="task-form-overlay" onClick={handleOverlayClick}>
       <div className="task-form">
         <h3>{task ? 'Edit Task' : 'New Task'}</h3>
         {error && <div className="error-message">{error}</div>}
